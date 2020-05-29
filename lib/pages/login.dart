@@ -233,17 +233,20 @@ String error='';
                                color: Colors.teal[800],
                                elevation: 0.0,
                                child: MaterialButton(
-                                 onPressed: () async{
-                                                if(_formKey.currentState.validate()){
-                                   setState(() {
-                               loading = true;
-                                    });
-                                    dynamic result = await _auth.signInWithEmailAndPassword(email,password);
-                                    if(result ==null){
-                                      setState(() => error= "Could not sign in with those credentials");
-                                       }
-                                  }
-                                 },
+                     onPressed: () async{ 
+                    if (_formKey.currentState.validate()) {
+                      setState(() {
+                        loading = true;
+                      });
+                      dynamic result = await _auth.signInWithEmailAndPassword( email, password);
+                      if (result == null) {
+                        setState(() {
+                          error = "Something went wrong!!";
+                          loading = false;
+                        });
+                      }
+                    }
+                  },
                                  minWidth:MediaQuery.of(context).size.width ,
                                child: Text(
                              "Login",
@@ -254,10 +257,16 @@ String error='';
                             fontSize:18.0
                             )
                                ), ),
+                               
+                               
                  
                         ),
+                        
                   ),
-                 
+                 SizedBox(height: 20,),
+                Text(error,
+                style: TextStyle(color : Colors.red),
+                ),
                  //Divider(color: Colors.white,),
                        Padding
                        (padding: const EdgeInsets.all(8.0),

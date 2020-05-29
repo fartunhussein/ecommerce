@@ -93,7 +93,7 @@ class _SettingPageState extends State<SettingPage> {
             label: "Log out",
             disableDivider: false,
             onTap: () async{
-                await _auth.signOut();
+                await _auth.SignOut();
 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Login()));
               },
           ),
